@@ -1,0 +1,15 @@
+<div class="container">
+  <h1 class="text-center text-dark">Messages Records</h1>
+
+  <div class="card shadow p-3 mb-4 bg-body rounded">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><strong>Chat ID:</strong> <%= @message.chat_id %></li>
+      <li class="list-group-item"><strong>User ID:</strong> <%= @message.user_id %></li>
+      <li class="list-group-item"><strong>Body:</strong> <%= @message.body %></li>
+      <li class="list-group-item"><strong>Created at:</strong> <%= @message.created_at.strftime("%d %b %Y %H:%M") %></li>
+      <li class="list-group-item"><strong>Updated at:</strong> <%= @message.updated_at.strftime("%d %b %Y %H:%M") %></li>
+    </ul>
+  </div>
+
+    <%= link_to "← Back to Messages", messages_path, class: "btn btn-info" %>
+</div>
