@@ -15,9 +15,11 @@
   <% end %>
 
 <% if @chat.errors.any? %>
-  <ul>
+  <div class="alert alert-danger">
+  <ul> 
     <% @chat.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
     <% end %>
   </ul>
+  </div>
 <% end %>

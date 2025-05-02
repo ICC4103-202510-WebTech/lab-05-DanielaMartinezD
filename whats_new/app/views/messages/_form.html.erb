@@ -11,7 +11,7 @@
   
     <div class="mb-3">
       <%= f.label :body, "Message" %>
-      <%= f.text_area :body %>
+      <%= f.text_area :body, class: "form-control"%>
     </div>
   
     <div class="mb-3">
@@ -20,9 +20,11 @@
   <% end %>
 
 <% if @message.errors.any? %>
+  <div class="alert alert-danger">
   <ul>
     <% @message.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
     <% end %>
   </ul>
+  </div>
 <% end %>
