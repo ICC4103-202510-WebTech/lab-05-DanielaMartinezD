@@ -1,0 +1,23 @@
+<%= form_with model: @chat do |f| %>
+    <div class="mb-3">
+      <%= f.label :sender_id, "Sender" %>
+      <%= f.select :sender_id, options_from_collection_for_select(@users, :id, :email, @chat.sender_id), prompt: "Select sender" %>
+    </div>
+  
+    <div class="mb-3">
+      <%= f.label :receiver_id, "Receiver" %>
+      <%= f.select :receiver_id, options_from_collection_for_select(@users, :id, :email, @chat.receiver_id), prompt: "Select receiver" %>
+    </div>
+  
+    <div class="mb-3">
+      <%= f.submit "Create Chat", class: "btn btn-info text-white" %>
+    </div>
+  <% end %>
+
+<% if @chat.errors.any? %>
+  <ul>
+    <% @chat.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>

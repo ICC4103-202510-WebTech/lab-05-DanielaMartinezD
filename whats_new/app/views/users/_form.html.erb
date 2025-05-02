@@ -1,0 +1,30 @@
+<%= form_with model: @user do |f| %>
+    <div class="mb-3">
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+    </div>
+  
+    <div class="mb-3">
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+    </div>
+  
+    <div class="mb-3">
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+    </div>
+  
+    <div class="mb-3">
+      <%= f.submit "Create User", class: "btn btn-info text-white" %>
+    </div>
+  <% end %>
+
+  <% if @user.errors.any? %>
+  <div class="alert alert-danger">
+    <ul class="mb-0">
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
