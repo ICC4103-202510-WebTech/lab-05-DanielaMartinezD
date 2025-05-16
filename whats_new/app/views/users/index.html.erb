@@ -4,13 +4,15 @@
     <table class="table table-info table-striped">
         <thead class="table-dark">
             <tr>
-                <th>Id</th>
+                <th>ID</th>
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Email</th>
                 <th>Created</th>
                 <th>Updated</th>
+                <th>#Messages</th>
                 <th>Records</th>
+                <th>User</th>
             </tr>
         </thead>
         <tbody>
@@ -22,7 +24,9 @@
             <td><%= user.email %></td>
             <td><%= user.created_at.strftime("%d %b %Y %H:%M") %></td>
             <td><%= user.updated_at.strftime("%d %b %Y %H:%M") %></td>
+            <td><%= user.messages.count %>
             <td><%= link_to "View", user_path(user), class: "btn btn-sm btn-light" %></td>
+            <td><%= link_to "Edit", edit_user_path(user), class: "btn btn-sm btn-light" %></td>
             </tr>
         <% end %>
         </tbody>

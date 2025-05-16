@@ -1,17 +1,45 @@
 <div class="container">
-  <h1 class="text-center text-dark">User Records</h1>
-
   <div class="card shadow p-3 mb-4 bg-body rounded">
+    <h1 class="text-center text-dark">User Records</h1>
     <ul class="list-group list-group-flush">
       <li class="list-group-item"><strong>User ID:</strong> <%= @user.id %></li>
       <li class="list-group-item"><strong>First Name:</strong> <%= @user.first_name %></li>
       <li class="list-group-item"><strong>Last Name:</strong> <%= @user.last_name %></li>
+      <li class="list-group-item"><strong>Email:</strong> <%= @user.email %></li>
       <li class="list-group-item"><strong>Created at:</strong> <%= @user.created_at.strftime("%d %b %Y %H:%M") %></li>
       <li class="list-group-item"><strong>Updated at:</strong> <%= @user.updated_at.strftime("%d %b %Y %H:%M") %></li>
     </ul>
   </div>
 
-    <%= link_to "Add new user", new_user_path, class: "btn btn-dark" %>
-    <%= link_to "Back to users", users_path, class: "btn btn-info text-white" %>
+  <div class="card shadow p-3 mb-4 bg-body rounded">
+    <p class="text-dark"><strong>Chats as Sender:</strong></p>
+    <ul class="list-group list-group-flush">
+      <% @user.sent_chats.each do |chat| %>
+        <li class="list-group-item"><%= "Chat #{chat.id} with #{chat.receiver.email}" %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="card shadow p-3 mb-4 bg-body rounded">
+    <p class="text-dark"><strong>Chats as Receiver:</strong></p>
+    <ul class="list-group list-group-flush">
+      <% @user.received_chats.each do |chat| %>
+        <li class="list-group-item"><%= "Chat #{chat.id} with #{chat.sender.email}"%></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="card shadow p-3 mb-4 bg-body rounded">
+    <p class="text-dark"><strong>Messages Sent:</strong></p>
+    <ul class="list-group list-group-flush">
+      <% @user.messages.each do |message| %>
+        <li class="list-group-item"><%= message.body %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <%= link_to "Add new user", new_user_path, class: "btn btn-dark" %>
+  <%= link_to "Update user", edit_user_path, class: "btn btn-dark" %>
+  <%= link_to "Back to users", users_path, class: "btn btn-info text-white" %>
 
 </div>

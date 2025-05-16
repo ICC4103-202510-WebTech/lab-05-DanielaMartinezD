@@ -23,7 +23,24 @@ class MessagesController < ApplicationController
           render :new
         end
     end
-      
+    
+    def edit
+        @message = Message.find(params[:id])
+        @chats = Chat.all
+        @users = User.all
+    end
+
+    def update
+        @message = Message.find(params[:id])
+        if @message.update(message_params)
+            redirect_to @message, notice: "Message Updated."
+        else
+            @chats = Chat.all  
+            @users = User.all  
+            render :edit
+        end
+    end
+
     private
       
     def message_params
