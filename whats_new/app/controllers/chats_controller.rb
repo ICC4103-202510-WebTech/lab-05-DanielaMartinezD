@@ -1,11 +1,13 @@
 class ChatsController < ApplicationController
+    before_action :authenticate_user!
+    load_and_authorize_resource
+
     def index 
-        @chats = Chat.all
+        @chats = Chat.accessible_by(current_ability)
     end
 
     def show
-        @chat = Chat.find(params[:id])
-      end
+    end
 
     def new
         @chat = Chat.new

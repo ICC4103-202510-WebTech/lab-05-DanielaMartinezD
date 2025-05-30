@@ -1,0 +1,36 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow p-4">
+        <h2 class="text-center mb-4 text-dark">Log In</h2>
+
+        <%= form_with model: resource, url: session_path(resource_name), local: true do |f| %>
+          <div class="mb-3">
+            <%= f.label :email, class: "form-label text-dark" %>
+            <%= f.email_field :email, autofocus: true, class: "form-control" %>
+          </div>
+
+          <div class="mb-3">
+            <%= f.label :password, class: "form-label text-dark" %>
+            <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+          </div>
+
+          <% if devise_mapping.rememberable? %>
+            <div class="mb-3 form-check">
+              <%= f.check_box :remember_me, class: "form-check-input" %>
+              <%= f.label :remember_me, class: "form-check-label text-dark" %>
+            </div>
+          <% end %>
+
+          <div class="d-grid">
+            <%= f.submit "Log in", class: "btn btn-info text-white" %>
+          </div>
+        <% end %>
+
+        <hr>
+        <%= link_to "Forgot your password?", new_password_path(resource_name), class: "btn btn-link" %><br>
+        <%= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-link" %>
+      </div>
+    </div>
+  </div>
+</div>

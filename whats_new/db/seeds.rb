@@ -8,17 +8,87 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-lilo = User.create!(email: "ohanalilo@disney.com", first_name: "Lilo", last_name: "Pelekai")
-stitch = User.create!(email: "stitch@disney.com", first_name: "Stitch", last_name: "Pelekai")
-hello = User.create!(email: "hellokitty@sanrio.com", first_name: "Hello", last_name: "Kitty")
-cinnamon = User.create!(email: "cinnamon@sanrio.com", first_name: "Cinnamon", last_name: "Roll")
-hiccup = User.create!(email: "hiccup@dreamworks.com", first_name: "Hiccup", last_name: "Haddock")
-astrid = User.create!(email: "astrid.h@dreamworks.com", first_name: "Astrid", last_name: "Hofferson")
-violet = User.create!(email: "violetparr@pixar.com", first_name: "Violet", last_name: "Parr")
-jack = User.create!(email: "jack2@pixar.com", first_name: "Jack-Jack", last_name: "Parr")
-mickey = User.create!(email: "mickey50@disney.com", first_name: "Mickey", last_name: "Mouse")
-minnie = User.create!(email: "mrsminnie@jyp.com", first_name: "Minnie", last_name: "Mouse")
+User.destroy_all  # Borra todos los usuarios antes de crear nuevos
 
+lilo = User.create!(
+  email: "ohanalilo@disney.com",
+  first_name: "Lilo",
+  last_name: "Pelekai",
+  password: "password123",
+  password_confirmation: "password123"
+)
+
+stitch = User.create!(
+  email: "stitch@disney.com",
+  first_name: "Stitch",
+  last_name: "Pelekai",
+  password: "password123",
+  password_confirmation: "password123"
+)
+
+hello = User.create!(
+  email: "hellokitty@sanrio.com",
+  first_name: "Hello",
+  last_name: "Kitty",
+  password: "password123",
+  password_confirmation: "password123"
+)
+
+cinnamon = User.create!(
+  email: "cinnamon@sanrio.com",
+  first_name: "Cinnamon",
+  last_name: "Roll",
+  password: "password123",
+  password_confirmation: "password123"
+)
+
+hiccup = User.create!(
+  email: "hiccup@dreamworks.com",
+  first_name: "Hiccup",
+  last_name: "Haddock",
+  password: "password123",
+  password_confirmation: "password123"
+)
+
+astrid = User.create!(
+  email: "astrid.h@dreamworks.com",
+  first_name: "Astrid",
+  last_name: "Hofferson",
+  password: "password123",
+  password_confirmation: "password123"
+)
+
+violet = User.create!(
+  email: "violetparr@pixar.com",
+  first_name: "Violet",
+  last_name: "Parr",
+  password: "password123",
+  password_confirmation: "password123"
+)
+
+jack = User.create!(
+  email: "jack2@pixar.com",
+  first_name: "Jack-Jack",
+  last_name: "Parr",
+  password: "password123",
+  password_confirmation: "password123"
+)
+
+mickey = User.create!(
+  email: "mickey50@disney.com",
+  first_name: "Mickey",
+  last_name: "Mouse",
+  password: "password123",
+  password_confirmation: "password123"
+)
+
+minnie = User.create!(
+  email: "mrsminnie@jyp.com",
+  first_name: "Minnie",
+  last_name: "Mouse",
+  password: "password123",
+  password_confirmation: "password123"
+)
 
 #--------------------------------------------------------------
 

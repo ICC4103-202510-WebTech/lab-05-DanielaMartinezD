@@ -12,15 +12,15 @@
   </div>
 
   <div class="card shadow p-3 mb-4 bg-body rounded">
-    <p class="text-dark"><strong> Chat: </strong></p>
+    <p class="text-dark"><strong>Chat Participants:</strong></p>
     <ul class="list-group list-group-flush">
-    <strong>Sender</strong> <%= @chat.sender.first_name %><br>
-    <strong>Receiver</strong> <%= @chat.receiver.first_name %>
+      <li class="list-group-item"><strong>Sender:</strong> <%= @chat.sender.first_name %></li>
+      <li class="list-group-item"><strong>Receiver:</strong> <%= @chat.receiver.first_name %></li>
     </ul>
   </div>
 
   <div class="card shadow p-3 mb-4 bg-body rounded">
-    <p class="text-dark"><strong> Messages: </strong></p>
+    <p class="text-dark"><strong>Messages:</strong></p>
     <ul class="list-group list-group-flush">
       <% @chat.messages.each do |message| %>
         <li class="list-group-item"><%= message.user.email %>: <%= message.body %></li>
@@ -28,8 +28,10 @@
     </ul>
   </div>
 
-  <%= link_to "Add new chat", new_chat_path, class: "btn btn-dark" %>
-  <%= link_to "Edit chat", edit_chat_path, class: "btn btn-dark" %>
-  <%= link_to "Back to chats", chats_path, class: "btn btn-info text-white" %>
-
+  <div class="d-flex gap-2">
+    <% if can? :create, Chat.new(sender_id: current_user.id) %>
+      <%= link_to "New Chat", new_chat_path, class: "btn btn-dark" %>
+    <% end %>
+    <%= link_to "Back to chats", chats_path, class: "btn btn-info text-white" %>
+  </div>
 </div>

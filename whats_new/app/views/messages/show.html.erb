@@ -12,8 +12,12 @@
     </ul>
   </div>
 
-  <%= link_to "Add new message", new_message_path, class: "btn btn-dark" %>
-  <%= link_to "Edit message", edit_message_path, class: "btn btn-dark" %>
+  <% if can? :create, Message.new(user_id: current_user.id) %>
+    <%= link_to "New Message", new_message_path, class: "btn btn-dark" %>
+  <% end %>
+  <% if can? :edit, @message %>
+    <%= link_to "Edit", edit_message_path(@message), class: "btn btn-dark" %>
+  <% end %>
   <%= link_to "Back to messages", messages_path, class: "btn btn-info text-white" %>
 
 </div>
