@@ -25,9 +25,8 @@
           <td><%= message.updated_at.strftime("%d %b %Y %H:%M")  %></td>
           <td><%= link_to "View", message_path(message), class: "btn btn-sm btn-light" %></td>
           <td><% if can? :edit, message %>
-            <%= link_to "Edit", edit_message_path(message), class: "btn btn-sm btn-light" %>
-          <% end %>
-          <td>
+            <%= link_to "Edit", edit_message_path(message), class: "btn btn-sm btn-light" %><% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>
