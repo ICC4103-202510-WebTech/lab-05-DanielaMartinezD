@@ -4,8 +4,7 @@
   <table class="table table-info table-striped">
     <thead class="table-dark">
       <tr>
-        <th>ID</th>
-        <th>Sender</th>
+        <th>Chat ID</th>
         <th>Receiver</th>
         <th>Created</th>
         <th>Updated</th>
@@ -16,8 +15,7 @@
       <% @chats.each do |chat| %>
         <tr>
           <td><%= chat.id %></td>
-          <td><%= chat.sender.email %></td>
-          <td><%= chat.receiver.email %></td>
+          <td><%= chat.other_participant(current_user).full_name %></td>
           <td><%= chat.created_at.strftime("%d %b %Y %H:%M")  %></td>
           <td><%= chat.updated_at.strftime("%d %b %Y %H:%M")  %></td>
           <td><%= link_to "View", chat_path(chat), class: "btn btn-sm btn-light" %></td>
@@ -25,7 +23,5 @@
       <% end %>
     </tbody>
   </table>
-  <% if can? :create, Chat.new(sender_id: current_user.id) %>
-    <%= link_to "New Chat", new_chat_path, class: "btn btn-dark" %>
-  <% end %>
+  <%= link_to "New Chat", new_chat_path, class: "btn btn-dark" %>
 </div>

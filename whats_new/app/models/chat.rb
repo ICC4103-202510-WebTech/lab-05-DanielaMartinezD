@@ -8,7 +8,15 @@ class Chat < ApplicationRecord
     validates :receiver_id, presence: true
     validate :different_sender_receiver
     validate :chat_between_users_uniqueness
-  
+    
+    scope :involving, ->(user) {
+        where("sender_id = ? OR receiver_id = ?", user.id, user.id)
+    }
+
+    def other_participant(current_user)
+        sender == current_user ? receiver : sender
+    end
+    
     private
   
     def different_sender_receiver
